@@ -7,6 +7,7 @@ import (
 	"strconv"
 	_ "github.com/lib/pq"
 	"database/sql"
+	//"os"
 )
 
 
@@ -17,6 +18,24 @@ const (
   password = "apc3raPoC"
   dbname   = "postgres"
 )
+
+/*
+const (  
+  port     = 5432
+  dbname   = "postgres"
+)
+
+
+set DB_HOST=vhapoc.c6d1wvruqzfl.ap-southeast-2.rds.amazonaws.com
+set DB_USER=apcera
+set DB_PASSWORD=apc3raPoC
+*/
+
+/*
+var host string =os.Getenv("DB_HOST")
+var user string = os.Getenv("DB_USER")
+var password string = os.Getenv("DB_PASSWORD")
+*/
 
 
 var count int64=1
@@ -44,6 +63,7 @@ func Log(handler http.Handler) http.Handler {
 }
 
 func getCDRS(){
+	
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 	    "password=%s dbname=%s sslmode=disable",
 	    host, port, user, password, dbname)
